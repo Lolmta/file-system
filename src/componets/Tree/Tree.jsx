@@ -6,14 +6,9 @@ const Tree = ({data}) => {
 
   const content = data.content;
 
-
-  //принимаю дату {}
-  //в ретерне если дата то фолдер 
-  //внутри фолдера если контент то контернт.мап дата => three(data) вызываю дерево 
-
- 
   const Render = () => {
-    return content?<Folder data={data}/>:<File data={data}/>
+    return content?<Folder data={data}/>
+    :<File data={data}/>
   }
 
   return (

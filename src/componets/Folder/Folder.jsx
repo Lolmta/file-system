@@ -2,32 +2,36 @@ import React from 'react'
 import Tree from './../Tree/Tree';
 import File from '../File/File';
 import { useState } from 'react';
+import styled from 'styled-components'
+
+import { FaBeer } from "react-icons/fa";
+
+const Collapsible = styled.div`
+  height: ${p => (p.isOpen ? 'auto' : '0')};
+  overflow: hidden;
+`;
+
 
 const Folder = ({ data }) => {
 
+  const [isOpen, setIsOpen] = useState(false);
 
-  //внутри фолдера если контент то контернт.мап дата => three(data) вызываю дерево 
-
-
-  console.log('Folder', data)
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
 
   const content = data.content
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // const handleToggle = e => {
-  //   e.preventDefault();
-  //   setIsOpen(!isOpen);
-  // };
 
   const Render = () => {
-    return content ? content.map((data) => <Tree data={data} />) : <File data={data}/>
+    return content ? content.map((data) => <Tree data={data} />)
+      : <File data={data} />
   }
 
 
   return (
-    <div>
-        {data.name}
-        <Render/>
+    <div >
+      <FaBeer onClick={handleToggle}/> {data.name}
+      <Collapsible isOpen={isOpen}><Render /></Collapsible>
     </div>
   )
 }
