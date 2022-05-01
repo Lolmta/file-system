@@ -1,42 +1,31 @@
-import React from 'react'
-import Tree from './../Tree/Tree';
-import File from '../File/File';
+import React, { useState } from 'react';
 
-import { useState } from 'react';
-
-import styled from 'styled-components'
-import { AiOutlineFolder } from  'react-icons/ai'
+import styled from 'styled-components';
+import { AiOutlineFolder } from  'react-icons/ai';
 
 const Collapsible = styled.div`
   height: ${p => (p.isOpen ? 'auto' : '0')};
   overflow: hidden;
 `;
 
-
-const Folder = ({ data }) => {
-
+const Folder = ({ data, children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
 
-  const content = data.content
-
-  const Render = () => {
-    return content ? content.map((data) => <Tree data={data} />)
-      : <File data={data} />
-  }
-
-
   return (
     <div >
       <div onClick={handleToggle}>
-        <AiOutlineFolder />{data.name}
+        <AiOutlineFolder />
+          {data.name}
       </div>
-      <Collapsible isOpen={isOpen}><Render /></Collapsible>
+      <Collapsible isOpen={isOpen}>
+          {children}
+      </Collapsible>
     </div>
   )
-}
+};
 
-export default Folder
+export default Folder;

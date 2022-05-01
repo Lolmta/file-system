@@ -1,19 +1,17 @@
-import React from 'react'
-import Folder from '../Folder/Folder'
-import File from '../File/File'
+import React from 'react';
 
-const Tree = ({data}) => {
+import Folder from '../Folder/Folder';
+import File from '../File/File';
 
-  const content = data.content;
+const Tree = ({ data }) => {
 
-  const Render = () => {
-    return content?<Folder data={data}/>
-    :<File data={data}/>
-  }
-
-  return (
-      <Render/>
-  )
+    return (data.type === 'folder' ?
+            <Folder data={data}>
+                {data.content ? data.content.map(data => <Tree data={data} />) : <File data={data} />}
+            </Folder> :
+            <File data={data} />
+    );
 }
 
-export default Tree
+export default Tree;
+

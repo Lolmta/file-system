@@ -1,10 +1,12 @@
-import React from 'react'
-import {AiFillFile} from  'react-icons/ai'
+import React from 'react';
 
-const File = ({ data }) => {
-  return (
-    <div><AiFillFile/>{data.name}</div>
-  )
-}
+import { AiFillFile } from 'react-icons/ai';
 
-export default File
+const File = ({ data }) => (
+    <div>
+        <AiFillFile/>
+        { data.name }
+    </div>
+);
+
+export default File;
