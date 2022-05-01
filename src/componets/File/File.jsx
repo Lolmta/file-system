@@ -1,8 +1,9 @@
 import React from 'react'
+import {AiFillFile} from  'react-icons/ai'
 
 const File = ({ data }) => {
   return (
-    <div>{data.name}</div>
+    <div><AiFillFile/>{data.name}</div>
   )
 }
 

@@ -5,7 +5,7 @@ import File from '../File/File';
 import { useState } from 'react';
 
 import styled from 'styled-components'
-import { FaBeer } from "react-icons/fa";
+import { AiOutlineFolder } from  'react-icons/ai'
 
 const Collapsible = styled.div`
   height: ${p => (p.isOpen ? 'auto' : '0')};
@@ -32,7 +32,7 @@ const Folder = ({ data }) => {
   return (
     <div >
       <div onClick={handleToggle}>
-        <FaBeer />{data.name}
+        <AiOutlineFolder />{data.name}
       </div>
       <Collapsible isOpen={isOpen}><Render /></Collapsible>
     </div>
