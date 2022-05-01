@@ -1,0 +1,1 @@
+export const SET_LAST_DELETED = 'SET_LAST_DELETED';
