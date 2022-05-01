@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import styled from 'styled-components';
-import { AiOutlineFolder } from  'react-icons/ai';
+import { AiOutlineFolder } from 'react-icons/ai';
 
 const Collapsible = styled.div`
   height: ${p => (p.isOpen ? 'auto' : '0')};
@@ -19,10 +19,10 @@ const Folder = ({ data, children }) => {
     <div >
       <div onClick={handleToggle}>
         <AiOutlineFolder />
-          {data.name}
+        {data.name}
       </div>
       <Collapsible isOpen={isOpen}>
-          {children}
+        {children}
       </Collapsible>
     </div>
   )
