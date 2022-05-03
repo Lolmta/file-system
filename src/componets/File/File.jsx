@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import {BsTrash, BsFileEarmark} from 'react-icons/bs'
 import styled from 'styled-components';
 

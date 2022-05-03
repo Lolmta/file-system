@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import styled from 'styled-components';
-import { BsTrash , BsFolder, BsFolder2Open} from "react-icons/bs";
+import { BsTrash, BsFolder, BsFolder2Open } from "react-icons/bs";
 
 const Collapsible = styled.div`
   height: ${p => (p.isOpen ? 'auto' : '0')};
@@ -10,15 +10,15 @@ const Collapsible = styled.div`
 `;
 
 const StyledFolder = styled.div`
-padding: 8px 0 0 20px;
-font-size:18px;
-.name{
-    padding:0px 10px 0px;
-}
-.flexbl {
-    display: flex;
-    align-items: center;
-  }
+    padding: 10px 0 0 20px;
+    font-size:18px;
+    .name{
+        padding:0px 10px 0px;
+    }
+    .f-center{
+        display: flex;
+        align-items: center;
+    }
 `;
 
 const Folder = ({ data, children, onDelete }) => {
@@ -31,9 +31,9 @@ const Folder = ({ data, children, onDelete }) => {
     return (
 
         <StyledFolder>
-            <div className='flexbl'>
-                <div className='flexbl' onClick={handleToggle}>
-                   {!isOpen?<BsFolder />:<BsFolder2Open/>} 
+            <div className='f-center'>
+                <div className='f-center' onClick={handleToggle}>
+                    {!isOpen ? <BsFolder /> : <BsFolder2Open />}
                     <span className='name'>{data.name}</span>
                 </div>
                 <BsTrash onClick={() => onDelete(data)} />

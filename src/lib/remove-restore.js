@@ -19,9 +19,6 @@ export const removeEntityByPath = (path, content, level=0) => {
     return newContent;
 }
 
-
-
-
 export const restoreEntityByPath = (path, content, lastDeleted, level=0) => {
 
     const newContent = [...content];

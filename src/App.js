@@ -1,26 +1,26 @@
-import { useDispatch, useSelector } from 'react-redux';
-
 import './App.css';
+
 import Tree from './componets/Tree/Tree';
-import { setLastDeleted, setNewStructure } from './store/actions/actionCreators';
 import styled from 'styled-components';
 
+import { setLastDeleted, setNewStructure } from './store/actions/actionCreators';
 import { removeEntityByPath, restoreEntityByPath } from './lib/remove-restore';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Button = styled.button`
-  background: transparent;
-  border-radius: 3px;
-  border: 2px solid #4f978c;
-  color: #4f978c;
-  margin-left:20px;
-  margin-top:20px;
-  padding: 0.25em 1em;
-  font-size:16px;
+    background: transparent;
+    border-radius: 3px;
+    border: 2px solid #4f978c;
+    color: #4f978c;
+    margin-left:20px;
+    margin-top:20px;
+    padding: 0.25em 1em;
+    font-size:16px;
 
-  &:disabled {
-    color: #383838;
-    border-color:#383838;
-  }
+    &:disabled {
+        color: #383838;
+        border-color:#383838;
+    }
 `
 
 function App() {
@@ -49,6 +49,7 @@ function App() {
 
         if (lastDeleted.path === '/') {
             dispatch(setNewStructure(lastDeleted))
+            dispatch(setLastDeleted(null));
             return;
         }
 
