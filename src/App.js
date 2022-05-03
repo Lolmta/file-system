@@ -16,70 +16,28 @@ const Button = styled.button`
   font-size:16px;
 `
 
-
-// version for remove by Path and name
-
-// const removeEntityByPath = (path, content) => {
-//     const newContent = [...content];
-
-//     if (path.length === 1) {
-
-//         return newContent.filter(item => item.name !== path[0]);
-//     }
-
-//     const targetParent = path[0];
-//     const newPath = path.slice(1, path.length);
-//     console.log(newPath)
-//     for (const item of newContent) {
-//         if (item.name === targetParent) {
-//             item.content = removeEntityByPath(newPath, item.content);
-//         }
-//     }
-
-//     return newContent;
-// }
-
-
-//version for remove by Path and path
-
 const removeEntityByPath = (path, content, level) => {
     const newContent = [...content];
-
-    console.log(level+=1)
-
+    level+=1
+    const targetParent = path[0]
 
     if (path.length === 1) {
-     
-        
-
-        return newContent.filter(el => el.path.split('/').slice(-1) != path[0])
-        // return newContent.filter(item =>{
-        //     debugger
-        //     const b = item.path.split('/').slice(-1)
-        //     console.log(b)
-        //     console.log('path',path[0])
-        //     return b[level] !== path[0]
-        // }
-
-       // );
+        return newContent.filter(item => item.path.split('/')
+        .slice(-1) != targetParent)
     }
 
-    const targetParent = path[0];
     const newPath = path.slice(1, path.length);
 
     for (const item of newContent) {
-       
-        const a = item.path.split('/');
-        const b = a.slice(1, a.length);
-        
-        if (a[level] === targetParent) {
-   
-            item.content = removeEntityByPath(newPath, item.content, level++);
+        const separatedPath = item.path.split('/');
+        if (separatedPath[level] === targetParent) {
+            item.content = removeEntityByPath(newPath, item.content, level);
         }
     }
-
     return newContent;
 }
+
+
 
 const restoreEntityByPath = (path, content, lastDeleted) => {
 
@@ -119,8 +77,7 @@ function App() {
         const path = item.path.split('/');
 
         const newStructure = { ...structure };
-        newStructure.content = removeEntityByPath(path.slice(1, path.length), newStructure.content, 0); // version for remove by Path and path
-        //newStructure.content = removeEntityByPath(path.slice(1, path.length), newStructure.content); // version for remove by Path and name
+        newStructure.content = removeEntityByPath(path.slice(1, path.length), newStructure.content, 0);
         dispatch(setNewStructure(newStructure));
         dispatch(setLastDeleted(item));
     };
