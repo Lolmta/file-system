@@ -5,55 +5,101 @@ export let initialState = {
         type: 'folder',
         content: [
             {
-                name: 'firstFolder',
-                path: '/firstFolder',
+                name: 'src',
+                path: '/src',
                 type: 'folder',
                 content: [
                     {
-                        name: 'file1',
-                        path: '/firstFolder/file1',
-                        type: 'file',
-                        content: null
-                    },
-                    {
-                        name: 'file 2',
-                        path: '/firstFolder/file 2',
-                        type: 'file',
-                        content: null
-                    }
-                ]
-            },
-            {
-                name: 'first File',
-                path: '/first File',
-                type: 'file',
-                content: null
-            },
-            {
-                name: 'secondFolder',
-                path: '/secondFolder',
-                type: 'folder',
-                content: [
-                    {
-                        name: 'file 4',
-                        path: '/secondFolder/file 4',
-                        type: 'file',
-                        content: null
-                    },
-                    {
-                        name: 'folder5',
-                        path: '/secondFolder/folder5',
+                        name: 'components',
+                        path: '/src/components',
                         type: 'folder',
                         content: [
                             {
-                                name: 'file6',
-                                path: '/secondFolder/folder5/file6',
-                                type: 'file',
-                                content: null
+                                name: 'File',
+                                path: '/src/components/File',
+                                type: 'folder',
+                                content: [
+                                    {
+                                        name: 'file.jsx',
+                                        path: '/src/components/File/file.jsx',
+                                        type: 'file',
+                                        content: null
+                                    },
+                                ]
+                            },
+                            {
+                                name: 'Folder',
+                                path: '/src/components/Folder',
+                                type: 'folder',
+                                content: [
+                                    {
+                                        name: 'folder.jsx',
+                                        path: '/src/components/Folder/folder.jsx',
+                                        type: 'file',
+                                        content: null
+                                    },
+                                ]
+                            },
+                            {
+                                name: 'Tree',
+                                path: '/src/components/Tree',
+                                type: 'folder',
+                                content: [
+                                    {
+                                        name: 'tree.jsx',
+                                        path: '/src/components/Tree/tree.jsx',
+                                        type: 'file',
+                                        content: null
+                                    },
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: 'App.js',
+                        path: '/src/App.js',
+                        type: 'file',
+                        content: null
+                    },
+                    {
+                        name: 'App.css',
+                        path: '/src/App.css',
+                        type: 'file',
+                        content: null
+                    },
+                    {
+                        name: 'store',
+                        path: '/src/store',
+                        type: 'folder',
+                        content: [
+                            {
+                                name: 'actions',
+                                path: '/src/store/actions',
+                                type: 'folder',
+                                content: [
+                                    {
+                                        name: 'actionCreators.js',
+                                        path: '/src/store/actions/actionCreators.js',
+                                        type: 'file',
+                                        content: null
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
+            },
+            {
+                name: 'package-lock.json',
+                path: '/package-lock.json',
+                type: 'file',
+                content: null
+            },
+            {
+                name: 'package.json',
+                path: '/package.json',
+                type: 'file',
+                content: null
             }
         ]
     },
