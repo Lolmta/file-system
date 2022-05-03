@@ -16,7 +16,7 @@ const Button = styled.button`
   font-size:16px;
 `
 
-const removeEntityByPath = (path, content, level) => {
+const removeEntityByPath = (path, content, level=0) => {
     const newContent = [...content];
     level+=1
     const targetParent = path[0]
@@ -39,9 +39,11 @@ const removeEntityByPath = (path, content, level) => {
 
 
 
-const restoreEntityByPath = (path, content, lastDeleted) => {
+
+const restoreEntityByPath = (path, content, lastDeleted, level=0) => {
 
     const newContent = [...content];
+    level+=1
 
     if (path.length === 1) {
         newContent.push(lastDeleted)
@@ -51,9 +53,9 @@ const restoreEntityByPath = (path, content, lastDeleted) => {
     const targetParent = path[0];
     const newPath = path.slice(1, path.length);
     for (const item of newContent) {
-
-        if (item.name === targetParent) {
-            item.content = restoreEntityByPath(newPath, item.content, lastDeleted);
+        const separatedPath = item.path.split('/');
+        if (separatedPath[level] === targetParent) {
+            item.content = restoreEntityByPath(newPath, item.content, lastDeleted, level);
         }
     }
     return newContent;
@@ -75,9 +77,10 @@ function App() {
         }
 
         const path = item.path.split('/');
-
         const newStructure = { ...structure };
-        newStructure.content = removeEntityByPath(path.slice(1, path.length), newStructure.content, 0);
+
+        newStructure.content = removeEntityByPath(path.slice(1, path.length), newStructure.content);
+
         dispatch(setNewStructure(newStructure));
         dispatch(setLastDeleted(item));
     };
@@ -90,16 +93,14 @@ function App() {
         }
 
         const path = lastDeleted.path.split('/');
-
-
         const newStructure = { ...structure };
+
         //newStructure.content = restoreEntityByPath(path.slice(1, path.length), newStructure.content, 0, lastDeleted); 
         newStructure.content = restoreEntityByPath(path.slice(1, path.length), newStructure.content, lastDeleted);
+
         dispatch(setNewStructure(newStructure));
         dispatch(setLastDeleted(null));
     };
-
-
 
 
     return (
