@@ -5,6 +5,8 @@ import Tree from './componets/Tree/Tree';
 import { setLastDeleted, setNewStructure } from './store/actions/actionCreators';
 import styled from 'styled-components';
 
+import { removeEntityByPath, restoreEntityByPath } from './lib/remove-restore';
+
 const Button = styled.button`
   background: transparent;
   border-radius: 3px;
@@ -15,52 +17,6 @@ const Button = styled.button`
   padding: 0.25em 1em;
   font-size:16px;
 `
-
-const removeEntityByPath = (path, content, level=0) => {
-    const newContent = [...content];
-    level+=1
-    const targetParent = path[0]
-
-    if (path.length === 1) {
-        return newContent.filter(item => item.path.split('/')
-        .slice(-1) != targetParent)
-    }
-
-    const newPath = path.slice(1, path.length);
-
-    for (const item of newContent) {
-        const separatedPath = item.path.split('/');
-        if (separatedPath[level] === targetParent) {
-            item.content = removeEntityByPath(newPath, item.content, level);
-        }
-    }
-    return newContent;
-}
-
-
-
-
-const restoreEntityByPath = (path, content, lastDeleted, level=0) => {
-
-    const newContent = [...content];
-    level+=1
-
-    if (path.length === 1) {
-        newContent.push(lastDeleted)
-        return newContent
-    }
-
-    const targetParent = path[0];
-    const newPath = path.slice(1, path.length);
-    for (const item of newContent) {
-        const separatedPath = item.path.split('/');
-        if (separatedPath[level] === targetParent) {
-            item.content = restoreEntityByPath(newPath, item.content, lastDeleted, level);
-        }
-    }
-    return newContent;
-}
-
 
 function App() {
     const dispatch = useDispatch();
@@ -95,7 +51,6 @@ function App() {
         const path = lastDeleted.path.split('/');
         const newStructure = { ...structure };
 
-        //newStructure.content = restoreEntityByPath(path.slice(1, path.length), newStructure.content, 0, lastDeleted); 
         newStructure.content = restoreEntityByPath(path.slice(1, path.length), newStructure.content, lastDeleted);
 
         dispatch(setNewStructure(newStructure));
