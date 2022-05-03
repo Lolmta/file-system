@@ -12,10 +12,7 @@ const Notification = styled.div`
 
 const Tree = ({ data, onDelete }) => {
     if (data.type === 'folder') {
-        const content = data.content
-            ? data.content.map(data => <Tree key={data.path} data={data} onDelete={onDelete} />)
-            : <File data={data} onDelete={onDelete} />;
-
+        const content = data.content.map(data => <Tree key={data.path} data={data} onDelete={onDelete} />)
         return <Folder data={data} onDelete={onDelete}>{content}</Folder>;
     }
 
