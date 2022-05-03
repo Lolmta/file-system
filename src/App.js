@@ -10,19 +10,23 @@ import { removeEntityByPath, restoreEntityByPath } from './lib/remove-restore';
 const Button = styled.button`
   background: transparent;
   border-radius: 3px;
-  border: 2px solid palevioletred;
-  color: palevioletred;
+  border: 2px solid #4f978c;
+  color: #4f978c;
   margin-left:20px;
   margin-top:20px;
   padding: 0.25em 1em;
   font-size:16px;
+
+  &:disabled {
+    color: #383838;
+    border-color:#383838;
+  }
 `
 
 function App() {
     const dispatch = useDispatch();
     const structure = useSelector(state => state.fileSystem.structure);
     const lastDeleted = useSelector(state => state.fileSystem.lastDeleted);
-
 
     const handleDelete = (item) => {
 
@@ -57,11 +61,12 @@ function App() {
         dispatch(setLastDeleted(null));
     };
 
-
     return (
         <div className="App">
             <Tree data={structure} onDelete={handleDelete} />
-            <Button onClick={handleRestore}>Restore last deleted</Button>
+            <Button onClick={handleRestore} disabled={!lastDeleted} >
+                Restore last deleted
+            </Button>
         </div>
     );
 }

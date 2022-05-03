@@ -6,12 +6,18 @@ import styled from 'styled-components';
 
 const StyledFile = styled.div`
 padding: 8px 0 0 20px;
+display: flex;
+    flex-direction: row;
+    align-items: center;
+.name{
+    padding:0px 10px 0px;
+}
 `;
 
 const File = ({data, onDelete}) => (
     <StyledFile>
         <BsFileEarmark/>
-        {data.name}
+        <span className='name'>{data.name}</span>
         <BsTrash onClick={() => onDelete(data)}/>
     </StyledFile>
 );
