@@ -21,7 +21,6 @@ describe('set last deeted item test', () => {
 });
 
 describe('set structure test', () => {
-
     test('set new structure', () => {
         const structure = {
             name: 'App.js',
@@ -47,7 +46,5 @@ describe('set structure test', () => {
         const newState = fileSystem(state,action)
         expect(newState.structure).toBeNull()
       });
-
-
 })
 
