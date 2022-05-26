@@ -1,7 +1,7 @@
 import { fileSystem } from "./fileSystem";
 import { setLastDeleted, setNewStructure } from './../actions/actionCreators';
 
-describe('set last deeted item test', () => {
+describe('file sistem reducer test', () => {
 
     const initialState = {
         structure: {

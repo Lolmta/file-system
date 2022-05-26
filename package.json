@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
-    "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
     "jest-dom": "^4.0.0",
@@ -43,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
     "jest": "^28.1.0"
   }
 }

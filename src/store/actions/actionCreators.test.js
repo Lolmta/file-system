@@ -1,8 +1,8 @@
 import { setLastDeleted, setNewStructure } from "./actionCreators";
 import { SET_LAST_DELETED , SET_NEW_STRUCTURE} from './actionTypes';
 
-describe('action creators test', () => {
-    test('setLastDeleted', () => {
+describe('actions test', () => {
+    test('should SET_LAST_DELETED', () => {
         expect(setLastDeleted({
             lastDeleted: 'this one has been removed'
         }))
@@ -14,7 +14,7 @@ describe('action creators test', () => {
             })
     });
 
-    test('setNewStructure', () => {
+    test('should SET_NEW_STRUCTURE', () => {
         expect(setNewStructure({
             structure: 'new structure'
         }))
