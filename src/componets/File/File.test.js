@@ -1,16 +1,13 @@
-import { render, screen, cleanup } from '@testing-library/react';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import File from './File';
-import "@testing-library/jest-dom/extend-expect";
-import "jest-styled-components";
-
-afterEach(cleanup);
 
 const data = {
     name: 'App.jsx'
 }
 
-describe('File filling', () => {
+afterEach(cleanup)
 
+describe('File filling', () => {
     test('name in document', () => {
         render(<File data={data} />);
         expect(screen.getByText(data.name)).toBeInTheDocument()
@@ -27,12 +24,23 @@ describe('File filling', () => {
     })
 })
 
-describe('File style', () => {
-
-    test('style', () => {
-        const { getByTestId } = render(<File data={data} />);
-        expect(getByTestId("StyledFile")).toHaveStyle("display: flex");
+describe('File button', () => {
+    test('name in document', () => {
+        render(<File data={data} />);
+        expect(screen.getByText(data.name)).toBeInTheDocument()
     })
+
+    //  test('name in document', async () => {
+    //     const handleClick = jest.fn()
+
+    //      const { getByTestId } =  render(<File data={data} onDelete={handleClick} />);
+        
+    //     await fireEvent.click(screen.getByTestId("onDelete"))
+    //     // expect(handleClick).toHaveBeenCalledTimes(1)
+
+    // })
+
 })
+
 
 

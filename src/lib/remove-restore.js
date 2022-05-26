@@ -40,35 +40,3 @@ export const restoreEntityByPath = (path, content, lastDeleted, level=0) => {
     return newContent;
 }
 
-
-const structure = {
-    name: 'root',
-    path: '/',
-    type: 'folder',
-    content: [
-        {
-            name: 'src',
-            path: '/src',
-            type: 'folder',
-            content: [
-                {
-                    name: 'App.js',
-                    path: '/src/App.js',
-                    type: 'file',
-                    content: null
-                },
-            ]
-        },
-        {
-            name: 'package-lock.json',
-            path: '/package-lock.json',
-            type: 'file',
-            content: null
-        }
-    ]
-}
-
-const path = 'src/App.js'
-const content = structure.content
-
-console.log(removeEntityByPath(path, content))
