@@ -29,21 +29,21 @@ const Folder = ({ data, children, onDelete }) => {
     };
 
     return (
-
         <StyledFolder>
             <div className='f-center'>
-                <div className='f-center' onClick={handleToggle}>
-                    {!isOpen ? <BsFolder /> : <BsFolder2Open />}
+                <div className='f-center' onClick={handleToggle}
+                    data-testid='toggle-button'>
+                    {!isOpen ? <BsFolder data-testid='folder-close' /> 
+                    : <BsFolder2Open  data-testid='folder-open'/>}
                     <span className='name'>{data.name}</span>
                 </div>
-                <BsTrash onClick={() => onDelete(data)} />
+                <BsTrash data-testid="onDelete"
+                 onClick={() => onDelete(data)} />
             </div>
             <Collapsible isOpen={isOpen}>
                 {children}
             </Collapsible>
         </StyledFolder>
-
-
     )
 };
 
