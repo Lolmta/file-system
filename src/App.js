@@ -63,7 +63,7 @@ function App() {
     };
 
     return (
-        <div className="App">
+        <div className='App'>
             <Tree data={structure} onDelete={handleDelete} />
             <Button onClick={handleRestore} disabled={!lastDeleted} >
                 Restore last deleted

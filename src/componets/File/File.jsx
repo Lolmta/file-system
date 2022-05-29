@@ -14,10 +14,10 @@ display: flex;
 `;
 
 const File = ({data, onDelete}) => (
-    <StyledFile data-testid="StyledFile" >
-        <BsFileEarmark data-testid="file"/>
+    <StyledFile data-testid='StyledFile' >
+        <BsFileEarmark data-testid='file'/>
         <span className='name'>{data.name}</span>
-        <BsTrash data-testid="onDelete" onClick={() => onDelete(data)}/>
+        <BsTrash data-testid='onDelete' onClick={() => onDelete(data)}/>
     </StyledFile>
 );
 

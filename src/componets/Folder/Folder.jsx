@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import styled from 'styled-components';
-import { BsTrash, BsFolder, BsFolder2Open } from "react-icons/bs";
+import { BsTrash, BsFolder, BsFolder2Open } from 'react-icons/bs';
 
 const Collapsible = styled.div`
   height: ${p => (p.isOpen ? 'auto' : '0')};
@@ -39,7 +39,7 @@ const Folder = ({ data, children, onDelete }) => {
                      data-testid='file-name'>
                     {data.name}</span>
                 </div>
-                <BsTrash data-testid="onDelete"
+                <BsTrash data-testid='onDelete'
                  onClick={() => onDelete(data)} />
             </div>
             <Collapsible isOpen={isOpen}>

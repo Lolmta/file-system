@@ -1,4 +1,4 @@
-import { setLastDeleted, setNewStructure } from "./actionCreators";
+import { setLastDeleted, setNewStructure } from './actionCreators';
 import { SET_LAST_DELETED , SET_NEW_STRUCTURE} from './actionTypes';
 
 describe('actions test', () => {

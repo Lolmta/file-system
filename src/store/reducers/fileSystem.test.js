@@ -1,4 +1,4 @@
-import { fileSystem } from "./fileSystem";
+import { fileSystem } from './fileSystem';
 import { setLastDeleted, setNewStructure } from './../actions/actionCreators';
 
 describe('file sistem reducer test', () => {
