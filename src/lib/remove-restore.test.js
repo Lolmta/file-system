@@ -1,65 +1,60 @@
-import { cleanup } from "@testing-library/react";
-import { removeEntityByPath , restoreEntityByPath} from "./remove-restore";
+import { removeEntityByPath, restoreEntityByPath } from "./remove-restore";
 
-afterEach(cleanup)
+describe("remove func test", () => {
+  let content;
 
-describe('remove func test', () => {
-
-  const structure = {
-    name: 'root',
-    path: '/',
-    type: 'folder',
-    content: [
+  beforeEach(() => {
+    content = [
       {
-        name: 'src',
-        path: '/src',
-        type: 'folder',
+        name: "src",
+        path: "/src",
+        type: "folder",
         content: [
           {
-            name: 'App.js',
-            path: '/src/App.js',
-            type: 'file',
-            content: null
-          }]
-      }]
-  }
-
-  const path = ['src', 'App.js']
-
-  test('should return the content without the removed value', () => {
-    const newContent = removeEntityByPath(path, structure.content)
-    expect(newContent[0].content).toEqual([]);
+            name: "App.js",
+            path: "/src/App.js",
+            type: "file",
+            content: null,
+          },
+        ],
+      },
+    ];
   });
 
+  test("should return the content without removed value", () => {
+    const path = ["src", "App.js"];
+    const newContent = removeEntityByPath(path, content);
+    const target = newContent[0].content;
+    expect(target).toEqual([]);
+  });
+
+  test("should remove all content", () => {
+    const path = "/src";
+    const newContent = removeEntityByPath(path, content);
+    expect(newContent.content).toBeUndefined();
+  });
 });
 
-
-describe('restore func test', () => {
-
-  const structure = {
-    name: 'root',
-    path: '/',
-    type: 'folder',
-    content: [
+describe("restore func test", () => {
+  test("should push last deleted item", () => {
+    const content = [
       {
-        name: 'src',
-        path: '/src',
-        type: 'folder',
-        content: []
-      }]
-  }
+        name: "src",
+        path: "/src",
+        type: "folder",
+        content: [],
+      },
+    ];
 
-  const lastDeleted =  {
-    name: 'App.js',
-    path: '/src/App.js',
-    type: 'file',
-    content: null
-  }
-  const path = ['src', 'App.js']
+    const lastDeleted = {
+      name: "App.js",
+      path: "/src/App.js",
+      type: "file",
+      content: null,
+    };
 
-  test('should push newContent', () => {
-    let newContent = restoreEntityByPath(path, structure.content, lastDeleted)
-    expect(...newContent[0].content).toEqual(lastDeleted)
+    const path = ["src", "App.js"];
+    let newContent = restoreEntityByPath(path, content, lastDeleted);
+    expect(...newContent[0].content).toEqual(lastDeleted);
   });
-
 });

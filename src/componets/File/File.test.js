@@ -8,24 +8,24 @@ describe("File filling", () => {
     render(<File data={data} />);
   });
 
-  test("name in document", () => {
+  test("should display the name", () => {
     const fileName = screen.getByText(data.name);
     expect(fileName).toBeInTheDocument();
   });
 
-  test("file icon in document", () => {
-    const fileIcon = screen.getByTestId("BsFileEarmark");
+  test("should display file icon", () => {
+    const fileIcon = screen.getByTestId("file");
     expect(fileIcon).toBeInTheDocument();
   });
 
-  test("button delete in document", () => {
+  test("should display delete button", () => {
     const deleteButton = screen.getByTestId("onDelete");
     expect(deleteButton).toBeInTheDocument();
   });
 });
 
 describe("File button", () => {
-  test("button click", () => {
+  test("the delete button should work on click", () => {
     const handleClick = jest.fn();
     render(<File data={data} onDelete={handleClick} />);
     const deleteButton = screen.getByTestId("onDelete");
