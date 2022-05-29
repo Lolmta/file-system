@@ -35,7 +35,9 @@ const Folder = ({ data, children, onDelete }) => {
                     data-testid='toggle-button'>
                     {!isOpen ? <BsFolder data-testid='folder-close' /> 
                     : <BsFolder2Open  data-testid='folder-open'/>}
-                    <span className='name'>{data.name}</span>
+                    <span className='name'
+                     data-testid='file-name'>
+                    {data.name}</span>
                 </div>
                 <BsTrash data-testid="onDelete"
                  onClick={() => onDelete(data)} />

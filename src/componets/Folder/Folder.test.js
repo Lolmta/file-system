@@ -8,8 +8,8 @@ describe("Folder filling", () => {
     render(<Folder data={data} />);
   });
   test("name in document", () => {
-    const fileName = screen.getByText(data.name);
-    expect(fileName).toBeInTheDocument();
+    const fileName = screen.getByTestId("file-name");
+    expect(fileName).toHaveTextContent(data.name);
   });
 
   test("button delete in document", () => {
@@ -18,8 +18,8 @@ describe("Folder filling", () => {
   });
 
   test("button delete in document", () => {
-    const deleteButton = screen.getByTestId("toggle-button");
-    expect(deleteButton).toBeInTheDocument();
+    const toggleButton = screen.getByTestId("toggle-button");
+    expect(toggleButton).toBeInTheDocument();
   });
 });
 
