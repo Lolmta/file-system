@@ -36,7 +36,6 @@ describe("Restore btn", () => {
   });
 
   test('button sh not be disabled', async() => {
-  
     deleteButton = await screen.findByRole('button');
     const handleClick = jest.fn();
     let lastDel =  {
