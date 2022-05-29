@@ -5,6 +5,9 @@ import { Provider } from "react-redux";
 import { store } from "./store/index";
 import { setLastDeleted } from "./store/actions/actionCreators";
 
+import Tree from "./componets/Tree/Tree";
+import { act } from "@testing-library/react";
+
 
 
 describe("Restore btn", () => {
@@ -66,4 +69,29 @@ describe("Restore btn", () => {
   });
 });
 
+
+
+
+describe('', ()=>{
+  test("", () => {
+    const handleClick = jest.fn();
+    act(() => {
+      render(
+        <Provider store={store}>
+          <App>
+            <Tree onDelete={handleClick} />
+          </App>
+        </Provider>
+      );
+    });
+  
+    let b = screen.getAllByTestId("onDelete");
+    act(() => {
+      b[0].addEventListener("click", handleClick);
+      fireEvent.click(b[0]);
+    });
+  
+    expect(handleClick).toBeCalled();
+  });
+})
 
