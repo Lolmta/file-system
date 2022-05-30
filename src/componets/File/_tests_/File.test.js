@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import File from './File';
+import File from '../File';
 
 const data = {name: 'App.jsx'};
 

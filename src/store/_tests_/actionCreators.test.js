@@ -1,5 +1,5 @@
-import { setLastDeleted, setNewStructure } from './actionCreators';
-import { SET_LAST_DELETED , SET_NEW_STRUCTURE} from './actionTypes';
+import { setLastDeleted, setNewStructure } from '../actions/actionCreators';
+import { SET_LAST_DELETED , SET_NEW_STRUCTURE} from '../actions/actionTypes';
 
 describe('actions test', () => {
     test('should SET_LAST_DELETED', () => {

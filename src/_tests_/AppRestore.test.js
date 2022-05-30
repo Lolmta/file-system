@@ -6,12 +6,13 @@ import { setLastDeleted } from "../store/actions/actionCreators";
 import React from "react";
 import { Provider } from "react-redux";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { act } from "@testing-library/react";
+import { act , unmount } from "@testing-library/react";
 
 describe("Restore btn test", () => {
+  
   beforeEach(() => {
     act(() => {
-      render(
+       render(
         <Provider store={store}>
           <App />
         </Provider>
@@ -45,7 +46,7 @@ describe("Restore btn test", () => {
     const handleClick = jest.fn();
     let lastDel = {
       name: "App.js",
-      path: "/src/App.js",
+      path: "/src/index.js",
       type: "file",
       content: null,
     };

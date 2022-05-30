@@ -1,4 +1,4 @@
-import { removeEntityByPath, restoreEntityByPath } from './remove-restore';
+import { removeEntityByPath, restoreEntityByPath } from '../remove-restore';
 
 describe('remove func test', () => {
   let content;
