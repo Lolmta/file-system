@@ -1,34 +1,6 @@
 import Tree from "../Tree.jsx";
 import { render, screen } from "@testing-library/react";
 
-// describe('Tree test', () => {
-//   test('should render by data', () => {
-//     let data = {};
-//     const {rerender} = render(<Tree data={data} />)
-
-//     expect(
-//       screen.getByText(/everything has been removed/i)
-//     ).toBeInTheDocument();
-
-//      data = {
-//       type: 'file',
-//       path: '/src/App.css',
-//     };
-//     rerender(<Tree data={data} />);
-//     expect(screen.getByTestId('file'));
-
-//      data = {
-//       type: 'folder',
-//       path: '/src/store',
-//       content: [{ name: 'actionCreators.js',
-//       path: '/src/store/actionCreators.js' }],
-//     };
-//     rerender(<Tree data={data} />);
-//     expect(screen.getByTestId('StyledFile'));
-
-//   });
-// });
-
 describe("Tree test", () => {
   test("should notify that everything is removed", () => {
     const data = {};
@@ -65,3 +37,33 @@ describe("Tree test", () => {
     expect(screen.getByTestId("StyledFile"));
   });
 });
+
+
+//SECOND OPTION FOR TESTING THE WOOD
+
+// describe('Tree test', () => {
+//   test('should render by data', () => {
+//     let data = {};
+//     const {rerender} = render(<Tree data={data} />)
+
+//     expect(
+//       screen.getByText(/everything has been removed/i)
+//     ).toBeInTheDocument();
+
+//      data = {
+//       type: 'file',
+//       path: '/src/App.css',
+//     };
+//     rerender(<Tree data={data} />);
+//     expect(screen.getByTestId('file'));
+
+//      data = {
+//       type: 'folder',
+//       path: '/src/store',
+//       content: [{ name: 'actionCreators.js',
+//       path: '/src/store/actionCreators.js' }],
+//     };
+//     rerender(<Tree data={data} />);
+//     expect(screen.getByTestId('StyledFile'));
+//   });
+// });
