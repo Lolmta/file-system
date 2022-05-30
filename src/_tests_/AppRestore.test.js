@@ -1,18 +1,16 @@
+import React from "react";
 import App from "../App";
 
 import { store } from "../store";
 import { setLastDeleted } from "../store/actions/actionCreators";
 
-import React from "react";
 import { Provider } from "react-redux";
-import { render, screen, fireEvent } from "@testing-library/react";
-import { act , unmount } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 
 describe("Restore btn test", () => {
-  
   beforeEach(() => {
     act(() => {
-       render(
+      render(
         <Provider store={store}>
           <App />
         </Provider>

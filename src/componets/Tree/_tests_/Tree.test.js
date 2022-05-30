@@ -38,7 +38,6 @@ describe("Tree test", () => {
   });
 });
 
-
 //SECOND OPTION FOR TESTING THE TREE
 
 // describe('Tree test', () => {
