@@ -39,7 +39,7 @@ describe("Tree test", () => {
 });
 
 
-//SECOND OPTION FOR TESTING THE WOOD
+//SECOND OPTION FOR TESTING THE TREE
 
 // describe('Tree test', () => {
 //   test('should render by data', () => {
