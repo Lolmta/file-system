@@ -1,30 +1,23 @@
 import React from "react";
 import App from "../App";
-import Tree from "../componets/Tree/Tree";
 
 import { store } from "../store";
 
 import { Provider } from "react-redux";
-import { render, screen, fireEvent, act } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 test("should delete something", () => {
-  const handleClick = jest.fn();
-  act(() => {
-    render(
-      <Provider store={store}>
-        <App>
-          <Tree onDelete={handleClick} />
-        </App>
-      </Provider>
-    );
-  });
+  const { unmount } = render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
 
   let deleteBtns = screen.getAllByTestId("onDelete");
 
-  act(() => {
-    deleteBtns[3].addEventListener("click", handleClick);
-    fireEvent.click(deleteBtns[3]);
-  });
+  expect(deleteBtns[3]).toBeInTheDocument();
+  fireEvent.click(deleteBtns[3]);
+  expect(deleteBtns[3]).not.toBeInTheDocument();
 
-  expect(handleClick).toBeCalled();
+  unmount();
 });
